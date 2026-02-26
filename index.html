@@ -4,17 +4,28 @@
     <meta charset="UTF-8"> 
     <title>Hello World</title>
     <style>
+        #clock {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            text-align: right;
+            font-size: 1.0rem;
+            font-family: Arial, sans-serif;
+        }
+        .star-list {
+            list-style-type:"★";
+        }
         body
         { 
-            background-color: black;
+            background-color: darkred;
         }
         .grey-box {
-      background-color: #e0e0e0;
+      background-color: grey;
       padding: 15px;
       margin: 15px auto;
       border-radius: 12px;
       width: 60%;
-      max-width: 500px;
+      max-width: 800px;
       text-align: center;
       font-family: Arial, sans-serif;
     }
@@ -26,15 +37,80 @@
         margin-bottom: 15px;
     }
     </style>
+
 </head>
 <body>
+
+    
+    <div id="clock"></div>
+    <button id="colorbtn">Change Background Color</button>
     <div class="grey-box">
+       <a href="me.html"></a>
         <img src="photo/me-800-by-800.jpeg" alt="A picture of me">
         <p>My name is King.</p>
     </div>
     <div class="grey-box">
     <h1>Introduction</h1>
-    <p>Hello, my name is King,i'm blasian my dad is black and my mom is japanese. I am an aviation admin major with a concentration in dispatch. I also do cheer for lewis university.  </p>
+    <p>Hello, my name is King,i'm a sophmore,i'm blasian my dad is black and my mom is japanese. I am an aviation admin major with a concentration in dispatch. I also do cheer for lewis university.  </p>
+    <h2>Where to find me</h2>
+    <ul class="star-list">
+        <li>Discord:Devineking0620</li>
+        <li>email: <a href="mailto:kingdray@lewisu.edu">kingdray@lewisu.edu</a></li>
+    </ul>
 
+    </div>
+
+    <div class="grey-box">
+        <h1>what I hope to learn</h1>
+        <p>I hope to learn how to get more in tune with coding. I know a lot about hardware but barely any knowledge of software development.</p>
+        <h2>Hobbies</h2>
+        <ul class="star-list">
+            <li>Playing video games</li>
+            <li>cheerleading</li>
+            <li>working on cars/computers </li>
+        </ul>
+        <h3>Fun Fact</h3>
+        <ul class="star-list">
+            <li>I didn't do cheer in highschool I did football,wrestling and lacrosse.</li>
+        </ul>
+    </div>
+
+<script>
+        const button = document.getElementById("colorbtn");
+
+        button.addEventListener("click", function() {
+            const colors = [
+                "red",
+                "blue",
+                "green",
+                "yellow",
+                "purple",
+                "orange",
+                "pink",
+                "cyan",
+                "magenta",
+                "lime"
+            ];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        });
+    </script>
+
+    <script>
+        function updateClock() {
+            const date = new Date();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const formattedHours = hours % 12 || 12;
+            const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+            const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+            const timeString = `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
 </body>
 </html>
